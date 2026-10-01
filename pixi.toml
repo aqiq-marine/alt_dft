@@ -1,0 +1,23 @@
+[workspace]
+authors = ["aqiq-marine <aoi.kiyohara0306@gmailcom>"]
+channels = ["conda-forge"]
+name = "alt_dft"
+platforms = ["win-64"]
+version = "0.1.0"
+
+[tasks]
+map = "pixi run python rxn_mapper.py"
+opt = "modal run opt.py"
+ts = "modal run ts.py"
+putcat = "pixi run python pos_cat.py"
+
+[dependencies]
+python = ">=3.14.7,<3.15"
+rdkit = ">=2026.3.6,<2027"
+setuptools = "<81"
+
+[pypi-dependencies]
+rxnmapper = ">=0.4.3, <0.5"
+ase = ">=3.29.0, <4"
+numpy = "*"
+
