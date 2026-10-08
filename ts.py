@@ -26,7 +26,7 @@ image = (
 
 
 volume = modal.Volume.from_name(
-    "models",
+    "uma",
     create_if_missing=True,
 )
 
@@ -35,7 +35,7 @@ volume = modal.Volume.from_name(
     image=image,
     gpu="T4",
     volumes={
-        "/models": volume,
+        "/uma": volume,
     },
     timeout=60 * 60,
 )
@@ -44,7 +44,7 @@ def run_ts(
 ):
     import os
 
-    os.environ["TORCHINDUCTOR_CACHE_DIR"] = "/models"
+    os.environ["TORCHINDUCTOR_CACHE_DIR"] = "/uma/cache"
 
     from io import StringIO
 
@@ -73,7 +73,7 @@ def run_ts(
     print("Loading UMA...")
 
     predictor = load_predict_unit(
-        "/models/models/uma-s-1p2p1.pt",
+        "/uma/model/uma-s-1p2p1.pt",
         device="cuda",
     )
 
